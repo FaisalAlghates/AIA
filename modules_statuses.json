@@ -1,0 +1,10 @@
+{
+    "Core": true,
+    "Home": true,
+    "Solutions": true,
+    "AutomationHub": true,
+    "About": true,
+    "Contact": true,
+    "Auth": true,
+    "Dashboard": true
+}

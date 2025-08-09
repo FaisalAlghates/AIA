@@ -1,0 +1,11 @@
+{
+    "name": "AutomationHub",
+    "alias": "automationhub",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\AutomationHub\\Providers\\AutomationHubServiceProvider"
+    ],
+    "files": []
+}

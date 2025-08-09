@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/automationhub",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\AutomationHub\\": "app/",
+            "Modules\\AutomationHub\\Database\\Factories\\": "database/factories/",
+            "Modules\\AutomationHub\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\AutomationHub\\Tests\\": "tests/"
+        }
+    }
+}

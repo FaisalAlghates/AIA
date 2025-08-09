@@ -1,0 +1,226 @@
+/* Automation Hub Page Enhancements */
+
+/* Advanced Loading Effects */
+.loading-spinner {
+    display: inline-block;
+    animation: spin 1s linear infinite;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid transparent;
+    border-bottom: 2px solid white;
+}
+
+.pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(139, 69, 255, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(139, 69, 255, 0.8);
+    }
+}
+
+/* Card Enhancements */
+.template-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.template-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.template-card:hover::before {
+    left: 100%;
+}
+
+/* Advanced Button Effects */
+.btn-advanced {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-advanced::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: -1;
+}
+
+.btn-advanced:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Filter Enhancements */
+.filter-active {
+    position: relative;
+}
+
+.filter-active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, #00d4ff, #8b45ff);
+    border-radius: 1px;
+}
+
+/* تأثيرات الإشعارات */
+.notification-enter {
+    animation: slideInRight 0.3s ease-out;
+}
+
+.notification-leave {
+    animation: slideOutRight 0.3s ease-in;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* تحسينات نافذة المعاينة */
+.preview-modal {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.preview-content {
+    max-height: 90vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(139, 69, 255, 0.5) transparent;
+}
+
+.preview-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.preview-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.preview-content::-webkit-scrollbar-thumb {
+    background: rgba(139, 69, 255, 0.5);
+    border-radius: 4px;
+}
+
+.preview-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 69, 255, 0.7);
+}
+
+/* تحسينات شريط البحث */
+.search-input {
+    position: relative;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-input:focus {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+    border-color: rgb(59, 130, 246);
+}
+
+/* تأثيرات التصنيفات */
+.category-tag {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.category-tag:hover {
+    transform: translateY(-2px);
+}
+
+/* تحسينات الإحصائيات */
+.stat-counter {
+    font-variant-numeric: tabular-nums;
+    transition: all 0.3s ease;
+}
+
+.stat-counter:hover {
+    transform: scale(1.1);
+}
+
+/* تأثيرات التحميل */
+.loading-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+.loading-text {
+    animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* تحسينات responsive */
+@media (max-width: 768px) {
+    .template-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .category-filters {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .category-filters button {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* تحسينات الوضع المظلم */
+@media (prefers-color-scheme: dark) {
+    .glass-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}

@@ -1,20 +1,18 @@
 <?php
 
-namespace Modules\Pricing\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\PricingPlan;
 use Illuminate\Http\Request;
 
-class PricingController extends Controller
+class TeamMembersController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $pricingPlans = PricingPlan::active()->ordered()->get();
-        return view('pricing::index', compact('pricingPlans'));
+        //
     }
 
     /**
@@ -22,37 +20,46 @@ class PricingController extends Controller
      */
     public function create()
     {
-        return view('pricing::create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {}
+    public function store(Request $request)
+    {
+        //
+    }
 
     /**
-     * Show the specified resource.
+     * Display the specified resource.
      */
-    public function show($id)
+    public function show(string $id)
     {
-        return view('pricing::show');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(string $id)
     {
-        return view('pricing::edit');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id) {}
+    public function update(Request $request, string $id)
+    {
+        //
+    }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id) {}
+    public function destroy(string $id)
+    {
+        //
+    }
 }

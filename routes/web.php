@@ -17,8 +17,18 @@ use Modules\Resources\Http\Controllers\ResourcesController;
 use Modules\Team\Http\Controllers\TeamController;
 use Modules\Portfolio\Http\Controllers\PortfolioController;
 use Modules\Analytics\Http\Controllers\AnalyticsController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ServicesController as AdminServicesController;
+use App\Http\Controllers\Admin\TeamMembersController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+
+// Admin Routes
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('services', AdminServicesController::class);
+    Route::resource('team-members', TeamMembersController::class);
+});
 
 // Core Routes
 Route::get('/solutions', [SolutionsController::class, 'index'])->name('solutions.index');

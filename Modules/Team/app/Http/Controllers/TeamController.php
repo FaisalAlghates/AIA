@@ -3,6 +3,7 @@
 namespace Modules\Team\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\TeamMember;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -12,7 +13,10 @@ class TeamController extends Controller
      */
     public function index()
     {
-        return view('team::index');
+        $leadershipTeam = TeamMember::active()->leadership()->ordered()->get();
+        $coreTeam = TeamMember::active()->coreTeam()->ordered()->get();
+        
+        return view('team::index', compact('leadershipTeam', 'coreTeam'));
     }
 
     /**
@@ -33,7 +37,8 @@ class TeamController extends Controller
      */
     public function show($id)
     {
-        return view('team::show');
+        $member = TeamMember::findOrFail($id);
+        return view('team::show', compact('member'));
     }
 
     /**

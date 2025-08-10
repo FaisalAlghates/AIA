@@ -373,7 +373,7 @@
                     <p class="post-excerpt">{{ $post->excerpt }}</p>
                     <div class="post-meta">
                         <span class="post-author">
-                            <i class="fas fa-user"></i> {{ $post->user ? $post->user->name : "Anonymous" }}
+                            <i class="fas fa-user"></i> {{ $post->user->name }}
                         </span>
                         <span class="post-date">
                             <i class="fas fa-calendar"></i> {{ $post->published_at->format('M j, Y') }}
@@ -420,7 +420,7 @@
                     <p class="post-excerpt">{{ $post->excerpt }}</p>
                     <div class="post-meta">
                         <span class="post-author">
-                            <i class="fas fa-user"></i> {{ $post->user ? $post->user->name : "Anonymous" }}
+                            <i class="fas fa-user"></i> {{ $post->user->name }}
                         </span>
                         <span class="post-date">
                             <i class="fas fa-calendar"></i> {{ $post->published_at->format('M j, Y') }}

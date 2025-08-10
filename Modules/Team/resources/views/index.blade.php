@@ -107,97 +107,77 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-                <!-- Faisal Yahya Al-Ghates -->
-                <div class="group relative backdrop-blur-xl bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-500 hover:scale-105 rounded-3xl overflow-hidden shadow-2xl animate-float">
-                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                @foreach($leadershipTeam as $index => $member)
+                <div class="group relative backdrop-blur-xl bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-500 hover:scale-105 rounded-3xl overflow-hidden shadow-2xl animate-float {{ $index > 0 ? 'animation-delay-' . ($index * 500) . 'ms' : '' }}">
+                    <div class="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" 
+                         style="background: linear-gradient(to right, {{ $member->color_from }}10, {{ $member->color_to }}10);"></div>
                     
                     <div class="relative p-8">
                         <!-- Avatar -->
                         <div class="flex justify-center mb-6">
-                            <div class="w-32 h-32 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-500">
-                                <span class="text-4xl font-black text-white">FG</span>
-                            </div>
+                            @if($member->avatar)
+                                <img src="{{ $member->avatar_url }}" alt="{{ $member->name }}" 
+                                     class="w-32 h-32 rounded-full shadow-2xl group-hover:scale-110 transition-transform duration-500 object-cover">
+                            @else
+                                <div class="w-32 h-32 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-500"
+                                     style="background: linear-gradient(to right, {{ $member->color_from }}, {{ $member->color_to }});">
+                                    <span class="text-4xl font-black text-white">{{ $member->initials }}</span>
+                                </div>
+                            @endif
                         </div>
                         
                         <!-- Info -->
                         <div class="text-center">
-                            <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
-                                Faisal Yahya Al-Ghates
+                            <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text transition-all duration-300"
+                                style="--tw-gradient-from: {{ $member->color_from }}; --tw-gradient-to: {{ $member->color_to }};">
+                                {{ $member->name }}
                             </h3>
-                            <p class="text-purple-400 font-semibold mb-4">Co-Founder & CEO</p>
+                            <p class="font-semibold mb-4" style="color: {{ $member->color_from }};">{{ $member->position }}</p>
                             <p class="text-white/80 leading-relaxed mb-6 group-hover:text-white transition-colors duration-300">
-                                Visionary leader with over 15 years of experience in AI and automation. 
-                                Passionate about transforming businesses through intelligent automation solutions.
+                                {{ $member->bio }}
                             </p>
                             
                             <!-- Skills -->
+                            @if($member->skills && count($member->skills) > 0)
                             <div class="flex flex-wrap justify-center gap-2 mb-6">
-                                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium">AI Strategy</span>
-                                <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-medium">Leadership</span>
-                                <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-sm font-medium">Innovation</span>
+                                @foreach($member->skills as $skill)
+                                <span class="px-3 py-1 rounded-full text-sm font-medium" 
+                                      style="background-color: {{ $member->color_from }}20; color: {{ $member->color_from }};">
+                                    {{ $skill }}
+                                </span>
+                                @endforeach
                             </div>
+                            @endif
                             
                             <!-- Social Links -->
+                            @if($member->social_links && count($member->social_links) > 0)
                             <div class="flex justify-center space-x-4">
-                                <a href="#" class="w-10 h-10 bg-white/10 hover:bg-blue-500/20 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110">
-                                    <svg class="w-5 h-5 text-white/80 hover:text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                                @foreach($member->social_links as $platform => $url)
+                                <a href="{{ $url }}" target="_blank" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+                                   style="background-color: {{ $member->color_from }}20;" 
+                                   onmouseover="this.style.backgroundColor='{{ $member->color_from }}20'"
+                                   onmouseout="this.style.backgroundColor='rgba(255,255,255,0.1)'">
+                                    @if($platform === 'linkedin')
+                                    <svg class="w-5 h-5 text-white/80" style="color: {{ $member->color_from }};" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                                     </svg>
-                                </a>
-                                <a href="#" class="w-10 h-10 bg-white/10 hover:bg-purple-500/20 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110">
-                                    <svg class="w-5 h-5 text-white/80 hover:text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                                    @elseif($platform === 'twitter')
+                                    <svg class="w-5 h-5 text-white/80" style="color: {{ $member->color_from }};" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
                                     </svg>
+                                    @elseif($platform === 'github')
+                                    <svg class="w-5 h-5 text-white/80" style="color: {{ $member->color_from }};" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                    @endif
                                 </a>
+                                @endforeach
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>
-
-                <!-- Abdulaziz Al-Zaidi -->
-                <div class="group relative backdrop-blur-xl bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-500 hover:scale-105 rounded-3xl overflow-hidden shadow-2xl animate-float animation-delay-500ms">
-                    <div class="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    
-                    <div class="relative p-8">
-                        <!-- Avatar -->
-                        <div class="flex justify-center mb-6">
-                            <div class="w-32 h-32 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-500">
-                                <span class="text-4xl font-black text-white">AZ</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Info -->
-                        <div class="text-center">
-                            <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 group-hover:bg-clip-text transition-all duration-300">
-                                Abdulaziz Al-Zaidi
-                            </h3>
-                            <p class="text-pink-400 font-semibold mb-4">Co-Founder & CTO</p>
-                            <p class="text-white/80 leading-relaxed mb-6 group-hover:text-white transition-colors duration-300">
-                                Technical architect and AI expert with deep expertise in machine learning and automation systems. 
-                                Drives the technical innovation behind our cutting-edge platform.
-                            </p>
-                            
-                            <!-- Skills -->
-                            <div class="flex flex-wrap justify-center gap-2 mb-6">
-                                <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-medium">Machine Learning</span>
-                                <span class="px-3 py-1 bg-pink-500/20 text-pink-400 rounded-full text-sm font-medium">Architecture</span>
-                                <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium">Automation</span>
-                            </div>
-                            
-                            <!-- Social Links -->
-                            <div class="flex justify-center space-x-4">
-                                <a href="#" class="w-10 h-10 bg-white/10 hover:bg-purple-500/20 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110">
-                                    <svg class="w-5 h-5 text-white/80 hover:text-purple-400" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                                    </svg>
-                                </a>
-                                <a href="#" class="w-10 h-10 bg-white/10 hover:bg-pink-500/20 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110">
-                                    <svg class="w-5 h-5 text-white/80 hover:text-pink-400" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
+                @endforeach
                     </div>
                 </div>
             </div>
@@ -220,131 +200,41 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Team Member 1 -->
-                <div class="group relative backdrop-blur-xl bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-500 hover:scale-105 p-8 rounded-3xl shadow-2xl animate-float">
-                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+                @foreach($coreTeam as $index => $member)
+                <div class="group relative backdrop-blur-xl bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-500 hover:scale-105 p-8 rounded-3xl shadow-2xl animate-float {{ $index > 0 ? 'animation-delay-' . ($index * 500) . 'ms' : '' }}">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" 
+                         style="background: linear-gradient(to right, {{ $member->color_from }}10, {{ $member->color_to }}10);"></div>
                     
                     <div class="relative text-center">
-                        <div class="w-24 h-24 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl group-hover:scale-110 transition-transform duration-500">
-                            <span class="text-2xl font-black text-white">SW</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Sarah Wilson</h3>
-                        <p class="text-blue-400 font-semibold mb-4">Lead AI Engineer</p>
+                        @if($member->avatar)
+                            <img src="{{ $member->avatar_url }}" alt="{{ $member->name }}" 
+                                 class="w-24 h-24 rounded-full mx-auto mb-6 shadow-2xl group-hover:scale-110 transition-transform duration-500 object-cover">
+                        @else
+                            <div class="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl group-hover:scale-110 transition-transform duration-500"
+                                 style="background: linear-gradient(to right, {{ $member->color_from }}, {{ $member->color_to }});">
+                                <span class="text-2xl font-black text-white">{{ $member->initials }}</span>
+                            </div>
+                        @endif
+                        
+                        <h3 class="text-xl font-bold text-white mb-2">{{ $member->name }}</h3>
+                        <p class="font-semibold mb-4" style="color: {{ $member->color_from }};">{{ $member->position }}</p>
                         <p class="text-white/80 text-sm leading-relaxed mb-4">
-                            Specializes in developing advanced machine learning algorithms and neural networks for automation workflows.
+                            {{ $member->bio }}
                         </p>
+                        
+                        @if($member->skills && count($member->skills) > 0)
                         <div class="flex flex-wrap justify-center gap-1">
-                            <span class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs">Python</span>
-                            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">TensorFlow</span>
-                            <span class="px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs">AI</span>
+                            @foreach($member->skills as $skill)
+                            <span class="px-2 py-1 rounded-full text-xs font-medium" 
+                                  style="background-color: {{ $member->color_from }}20; color: {{ $member->color_from }};">
+                                {{ $skill }}
+                            </span>
+                            @endforeach
                         </div>
+                        @endif
                     </div>
                 </div>
-
-                <!-- Team Member 2 -->
-                <div class="group relative backdrop-blur-xl bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-500 hover:scale-105 p-8 rounded-3xl shadow-2xl animate-float animation-delay-500ms">
-                    <div class="absolute inset-0 bg-gradient-to-r from-green-500/10 to-emerald-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
-                    
-                    <div class="relative text-center">
-                        <div class="w-24 h-24 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl group-hover:scale-110 transition-transform duration-500">
-                            <span class="text-2xl font-black text-white">MJ</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Michael Johnson</h3>
-                        <p class="text-green-400 font-semibold mb-4">Senior Backend Developer</p>
-                        <p class="text-white/80 text-sm leading-relaxed mb-4">
-                            Builds robust and scalable backend systems that power our automation platform with enterprise-grade reliability.
-                        </p>
-                        <div class="flex flex-wrap justify-center gap-1">
-                            <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Laravel</span>
-                            <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-xs">PHP</span>
-                            <span class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs">APIs</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Member 3 -->
-                <div class="group relative backdrop-blur-xl bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-500 hover:scale-105 p-8 rounded-3xl shadow-2xl animate-float animation-delay-1000ms">
-                    <div class="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
-                    
-                    <div class="relative text-center">
-                        <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl group-hover:scale-110 transition-transform duration-500">
-                            <span class="text-2xl font-black text-white">EL</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Emily Lee</h3>
-                        <p class="text-purple-400 font-semibold mb-4">UX/UI Designer</p>
-                        <p class="text-white/80 text-sm leading-relaxed mb-4">
-                            Creates beautiful and intuitive user experiences that make complex automation workflows simple and accessible.
-                        </p>
-                        <div class="flex flex-wrap justify-center gap-1">
-                            <span class="px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs">Figma</span>
-                            <span class="px-2 py-1 bg-pink-500/20 text-pink-400 rounded-full text-xs">Design</span>
-                            <span class="px-2 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs">UX</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Member 4 -->
-                <div class="group relative backdrop-blur-xl bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-500 hover:scale-105 p-8 rounded-3xl shadow-2xl animate-float animation-delay-1500ms">
-                    <div class="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-red-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
-                    
-                    <div class="relative text-center">
-                        <div class="w-24 h-24 bg-gradient-to-r from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl group-hover:scale-110 transition-transform duration-500">
-                            <span class="text-2xl font-black text-white">DK</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">David Kim</h3>
-                        <p class="text-orange-400 font-semibold mb-4">DevOps Engineer</p>
-                        <p class="text-white/80 text-sm leading-relaxed mb-4">
-                            Ensures our platform runs smoothly with advanced infrastructure, monitoring, and deployment automation.
-                        </p>
-                        <div class="flex flex-wrap justify-center gap-1">
-                            <span class="px-2 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs">AWS</span>
-                            <span class="px-2 py-1 bg-red-500/20 text-red-400 rounded-full text-xs">Docker</span>
-                            <span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-xs">K8s</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Member 5 -->
-                <div class="group relative backdrop-blur-xl bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-500 hover:scale-105 p-8 rounded-3xl shadow-2xl animate-float animation-delay-2000ms">
-                    <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
-                    
-                    <div class="relative text-center">
-                        <div class="w-24 h-24 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl group-hover:scale-110 transition-transform duration-500">
-                            <span class="text-2xl font-black text-white">AG</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Anna Garcia</h3>
-                        <p class="text-cyan-400 font-semibold mb-4">Data Scientist</p>
-                        <p class="text-white/80 text-sm leading-relaxed mb-4">
-                            Analyzes complex data patterns to improve our AI models and provide actionable insights for users.
-                        </p>
-                        <div class="flex flex-wrap justify-center gap-1">
-                            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs">Analytics</span>
-                            <span class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs">ML</span>
-                            <span class="px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs">Statistics</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Team Member 6 -->
-                <div class="group relative backdrop-blur-xl bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-500 hover:scale-105 p-8 rounded-3xl shadow-2xl animate-float animation-delay-2500ms">
-                    <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
-                    
-                    <div class="relative text-center">
-                        <div class="w-24 h-24 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl group-hover:scale-110 transition-transform duration-500">
-                            <span class="text-2xl font-black text-white">RT</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Robert Taylor</h3>
-                        <p class="text-indigo-400 font-semibold mb-4">Security Engineer</p>
-                        <p class="text-white/80 text-sm leading-relaxed mb-4">
-                            Protects our platform and users with advanced security measures, encryption, and compliance protocols.
-                        </p>
-                        <div class="flex flex-wrap justify-center gap-1">
-                            <span class="px-2 py-1 bg-indigo-500/20 text-indigo-400 rounded-full text-xs">Security</span>
-                            <span class="px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs">Encryption</span>
-                            <span class="px-2 py-1 bg-pink-500/20 text-pink-400 rounded-full text-xs">Compliance</span>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

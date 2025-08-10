@@ -3,6 +3,8 @@
 namespace Modules\Analytics\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\AnalyticsData;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AnalyticsController extends Controller
@@ -12,7 +14,28 @@ class AnalyticsController extends Controller
      */
     public function index()
     {
-        return view('analytics::index');
+        // Get current metrics
+        $totalRevenue = AnalyticsData::getMetricValue('total_revenue');
+        $totalUsers = AnalyticsData::getMetricValue('total_users');
+        $totalAutomations = AnalyticsData::getMetricValue('total_automations');
+        $todayEfficiency = AnalyticsData::getMetricValue('automation_efficiency', Carbon::today());
+
+        // Get chart data for the last 30 days
+        $revenueHistory = AnalyticsData::getMetricHistory('daily_revenue', 30);
+        $usersHistory = AnalyticsData::getMetricHistory('active_users', 30);
+        $efficiencyHistory = AnalyticsData::getMetricHistory('automation_efficiency', 30);
+        $automationHistory = AnalyticsData::getMetricHistory('tasks_automated', 30);
+
+        return view('analytics::index', compact(
+            'totalRevenue',
+            'totalUsers', 
+            'totalAutomations',
+            'todayEfficiency',
+            'revenueHistory',
+            'usersHistory',
+            'efficiencyHistory',
+            'automationHistory'
+        ));
     }
 
     /**

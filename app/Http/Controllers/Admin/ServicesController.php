@@ -1,9 +1,8 @@
 <?php
 
-namespace Modules\Services\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Service;
 use Illuminate\Http\Request;
 
 class ServicesController extends Controller
@@ -13,8 +12,7 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        $services = Service::active()->ordered()->get();
-        return view('services::index', compact('services'));
+        //
     }
 
     /**
@@ -22,38 +20,46 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        return view('services::create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {}
+    public function store(Request $request)
+    {
+        //
+    }
 
     /**
-     * Show the specified resource.
+     * Display the specified resource.
      */
-    public function show($id)
+    public function show(string $id)
     {
-        $service = Service::where('slug', $id)->orWhere('id', $id)->firstOrFail();
-        return view('services::show', compact('service'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(string $id)
     {
-        return view('services::edit');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id) {}
+    public function update(Request $request, string $id)
+    {
+        //
+    }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id) {}
+    public function destroy(string $id)
+    {
+        //
+    }
 }

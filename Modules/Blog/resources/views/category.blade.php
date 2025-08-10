@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIA Blog - Artificial Intelligence & Technology</title>
+    <title>{{ $category->name }} - AIA Blog</title>
+    <meta name="description" content="{{ $category->description }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -66,14 +67,39 @@
             transform: translateY(-2px);
         }
 
-        .header {
+        .back-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-header {
             text-align: center;
             margin-bottom: 40px;
             color: white;
         }
 
-        .header h1 {
-            font-size: 3.5rem;
+        .category-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .category-title {
+            font-size: 3rem;
             font-weight: 900;
             margin-bottom: 15px;
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
@@ -88,93 +114,36 @@
             50% { background-position: 100% 50%; }
         }
 
-        .header p {
+        .category-description {
             font-size: 1.2rem;
             opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .search-section {
-            margin-bottom: 40px;
-            padding: 30px;
-        }
-
-        .search-form {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .search-input {
-            flex: 1;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 25px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            font-size: 1rem;
-            min-width: 300px;
-        }
-
-        .search-input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .search-btn, .filter-btn {
-            padding: 15px 25px;
-            border: none;
-            border-radius: 25px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .search-btn:hover, .filter-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .categories {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .category-tag {
-            padding: 8px 16px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .category-tag:hover, .category-tag.active {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .featured-section {
-            margin-bottom: 50px;
-        }
-
-        .section-title {
-            color: white;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 30px;
+        .posts-stats {
             text-align: center;
+            margin-bottom: 40px;
         }
 
-        .featured-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
+        .stats-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            display: inline-block;
+            color: white;
+        }
+
+        .stats-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4ecdc4;
+        }
+
+        .stats-label {
+            font-size: 1rem;
+            opacity: 0.8;
         }
 
         .posts-grid {
@@ -210,16 +179,6 @@
             border-radius: 15px;
             font-size: 0.8rem;
             font-weight: 600;
-        }
-
-        .post-category {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            display: inline-block;
-            margin-bottom: 15px;
         }
 
         .post-title {
@@ -258,6 +217,7 @@
             gap: 15px;
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
+            margin-bottom: 15px;
         }
 
         .read-more {
@@ -299,14 +259,34 @@
             transform: translateY(-2px);
         }
 
+        .no-posts {
+            text-align: center;
+            padding: 60px;
+            color: white;
+        }
+
+        .no-posts i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
+        .no-posts h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .no-posts p {
+            opacity: 0.8;
+        }
+
         @media (max-width: 768px) {
-            .header h1 { font-size: 2.5rem; }
-            .search-form { flex-direction: column; }
-            .search-input { min-width: auto; }
-            .featured-grid, .posts-grid { 
+            .category-title { font-size: 2rem; }
+            .posts-grid { 
                 grid-template-columns: 1fr; 
                 gap: 20px;
             }
+            .post-meta { flex-direction: column; gap: 10px; align-items: flex-start; }
             .nav .container { flex-direction: column; gap: 10px; }
         }
     </style>
@@ -323,88 +303,27 @@
     </div>
 
     <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1>Artificial Intelligence Blog</h1>
-            <p>Discover the latest developments and trends in artificial intelligence and machine learning</p>
+        <a href="{{ route('blog.index') }}" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Blog
+        </a>
+
+        <!-- Category Header -->
+        <div class="category-header">
+            <span class="category-icon" style="color: {{ $category->color }};">{{ $category->icon }}</span>
+            <h1 class="category-title">{{ $category->name }}</h1>
+            <p class="category-description">{{ $category->description }}</p>
         </div>
 
-        <!-- Search and Filter Section -->
-        <div class="search-section glassmorphism">
-            <form method="GET" class="search-form">
-                <input type="text" name="search" placeholder="Search articles..." class="search-input" value="{{ request('search') }}">
-                <button type="submit" class="search-btn">
-                    <i class="fas fa-search"></i> Search
-                </button>
-                <select name="sort" class="filter-btn" onchange="this.form.submit()">
-                    <option value="recent" {{ request('sort') == 'recent' ? 'selected' : '' }}>Latest</option>
-                    <option value="popular" {{ request('sort') == 'popular' ? 'selected' : '' }}>Most Read</option>
-                </select>
-            </form>
-
-            <div class="categories">
-                <a href="{{ route('blog.index') }}" class="category-tag {{ !request('category') ? 'active' : '' }}">
-                    All Articles
-                </a>
-                @foreach($categories as $category)
-                    <a href="{{ route('blog.index', ['category' => $category->slug]) }}" 
-                       class="category-tag {{ request('category') == $category->slug ? 'active' : '' }}"
-                       style="background-color: {{ $category->color }}20; border-color: {{ $category->color }};">
-                        {{ $category->icon }} {{ $category->name }}
-                    </a>
-                @endforeach
+        <!-- Posts Stats -->
+        <div class="posts-stats">
+            <div class="stats-card glassmorphism">
+                <div class="stats-number">{{ $posts->total() }}</div>
+                <div class="stats-label">{{ $posts->total() == 1 ? 'Article' : 'Articles' }}</div>
             </div>
         </div>
 
-        <!-- Featured Posts -->
-        @if($featuredPosts->count() > 0 && !request('search') && !request('category'))
-        <div class="featured-section">
-            <h2 class="section-title">Featured Articles</h2>
-            <div class="featured-grid">
-                @foreach($featuredPosts as $post)
-                <div class="post-card" onclick="location.href='{{ route('blog.show', $post->slug) }}'">
-                    <div class="featured-badge">
-                        <i class="fas fa-star"></i> Featured
-                    </div>
-                    <div class="post-category" style="background-color: {{ $post->category->color }};">
-                        {{ $post->category->icon }} {{ $post->category->name }}
-                    </div>
-                    <h3 class="post-title">{{ $post->title }}</h3>
-                    <p class="post-excerpt">{{ $post->excerpt }}</p>
-                    <div class="post-meta">
-                        <span class="post-author">
-                            <i class="fas fa-user"></i> {{ $post->user ? $post->user->name : "Anonymous" }}
-                        </span>
-                        <span class="post-date">
-                            <i class="fas fa-calendar"></i> {{ $post->published_at->format('M j, Y') }}
-                        </span>
-                    </div>
-                    <div class="post-stats">
-                        <span><i class="fas fa-eye"></i> {{ $post->views_count }}</span>
-                        <span><i class="fas fa-clock"></i> {{ $post->reading_time_text }}</span>
-                    </div>
-                    <a href="{{ route('blog.show', $post->slug) }}" class="read-more">
-                        Read More <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                @endforeach
-            </div>
-        </div>
-        @endif
-
-        <!-- All Posts -->
-        <div class="posts-section">
-            <h2 class="section-title">
-                @if(request('category'))
-                    {{ $categories->where('slug', request('category'))->first()->name ?? 'Category' }} Articles
-                @elseif(request('search'))
-                    Search results for "{{ request('search') }}"
-                @else
-                    All Articles
-                @endif
-            </h2>
-
-            @if($posts->count() > 0)
+        <!-- Posts Grid -->
+        @if($posts->count() > 0)
             <div class="posts-grid">
                 @foreach($posts as $post)
                 <div class="post-card" onclick="location.href='{{ route('blog.show', $post->slug) }}'">
@@ -413,11 +332,10 @@
                         <i class="fas fa-star"></i> Featured
                     </div>
                     @endif
-                    <div class="post-category" style="background-color: {{ $post->category->color }};">
-                        {{ $post->category->icon }} {{ $post->category->name }}
-                    </div>
+                    
                     <h3 class="post-title">{{ $post->title }}</h3>
                     <p class="post-excerpt">{{ $post->excerpt }}</p>
+                    
                     <div class="post-meta">
                         <span class="post-author">
                             <i class="fas fa-user"></i> {{ $post->user ? $post->user->name : "Anonymous" }}
@@ -426,10 +344,12 @@
                             <i class="fas fa-calendar"></i> {{ $post->published_at->format('M j, Y') }}
                         </span>
                     </div>
+                    
                     <div class="post-stats">
                         <span><i class="fas fa-eye"></i> {{ $post->views_count }}</span>
                         <span><i class="fas fa-clock"></i> {{ $post->reading_time_text }}</span>
                     </div>
+                    
                     <a href="{{ route('blog.show', $post->slug) }}" class="read-more">
                         Read More <i class="fas fa-arrow-right"></i>
                     </a>
@@ -441,43 +361,20 @@
             <div class="pagination">
                 {{ $posts->links() }}
             </div>
-            @else
-            <div class="glassmorphism" style="padding: 60px; text-align: center; margin: 40px 0;">
-                <i class="fas fa-search" style="font-size: 3rem; color: white; margin-bottom: 20px;"></i>
-                <h3 style="color: white; margin-bottom: 15px;">No Articles Found</h3>
-                <p style="color: rgba(255, 255, 255, 0.8);">
-                    @if(request('search'))
-                        We couldn't find any articles matching your search "{{ request('search') }}"
-                    @else
-                        There are no articles in this category at the moment
-                    @endif
-                </p>
-                <a href="{{ route('blog.index') }}" class="read-more" style="margin-top: 20px;">
+        @else
+            <div class="glassmorphism no-posts">
+                <i class="fas fa-search"></i>
+                <h3>No Articles Found</h3>
+                <p>There are no articles in this category at the moment. Check back later!</p>
+                <a href="{{ route('blog.index') }}" class="back-btn" style="margin-top: 20px;">
                     <i class="fas fa-home"></i> View All Articles
                 </a>
             </div>
-            @endif
-        </div>
+        @endif
     </div>
 
     <script>
-        // Auto-submit search form
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.querySelector('.search-input');
-            const form = document.querySelector('.search-form');
-            
-            let timeout;
-            searchInput.addEventListener('input', function() {
-                clearTimeout(timeout);
-                timeout = setTimeout(() => {
-                    if (this.value.length >= 3 || this.value.length === 0) {
-                        form.submit();
-                    }
-                }, 500);
-            });
-        });
-
-        // Smooth animations
+        // Add smooth animations
         document.querySelectorAll('.post-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-10px) scale(1.02)';
@@ -486,6 +383,28 @@
             card.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0) scale(1)';
             });
+        });
+
+        // Add intersection observer for card animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.post-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
         });
     </script>
 </body>

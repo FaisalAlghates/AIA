@@ -13,11 +13,36 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Create multiple users for blog posts
+        User::factory()->create([
+            'name' => 'Admin User',
+            'email' => 'admin@aia.com',
+        ]);
 
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'John Smith',
+            'email' => 'john@aia.com',
+        ]);
+
+        User::factory()->create([
+            'name' => 'Sarah Johnson',
+            'email' => 'sarah@aia.com',
+        ]);
+
+        User::factory()->create([
+            'name' => 'Michael Brown',
+            'email' => 'michael@aia.com',
+        ]);
+
+        // Seed dynamic content
+        $this->call([
+            ServicesSeeder::class,
+            PricingPlansSeeder::class,
+            TeamMembersSeeder::class,
+            AnalyticsDataSeeder::class,
+            SettingsSeeder::class,
+            BlogCategorySeeder::class,
+            BlogPostSeederEnglish::class,
         ]);
     }
 }

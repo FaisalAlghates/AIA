@@ -196,17 +196,44 @@
             </div>
         </div>
     </section>
-</div>
-@endsection 
-                                          class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></textarea>
-                            </div>
-                            
-                            <button type="submit" 
-                                    class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200">
-                                Send Message
-                            </button>
-                        </form>
+    
+    <!-- Contact Form Section -->
+    <section class="py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass p-8 rounded-2xl">
+                <h2 class="text-3xl font-bold text-white mb-8 text-center">Send Us a Message</h2>
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-white/80 font-medium mb-2">Name</label>
+                            <input type="text" 
+                                   class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                        </div>
+                        <div>
+                            <label class="block text-white/80 font-medium mb-2">Email</label>
+                            <input type="email" 
+                                   class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                        </div>
                     </div>
+                    
+                    <div>
+                        <label class="block text-white/80 font-medium mb-2">Subject</label>
+                        <input type="text" 
+                               class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-white/80 font-medium mb-2">Message</label>
+                        <textarea rows="5" 
+                                  class="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"></textarea>
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200">
+                        Send Message
+                    </button>
+                </form>
+            </div>
                     
                     <!-- Contact Info -->
                     <div class="bg-gradient-to-br from-primary-600 to-secondary-600 p-8 lg:p-12 text-white">

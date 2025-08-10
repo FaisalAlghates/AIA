@@ -153,23 +153,12 @@
         </section>
         
         <!-- Team Section -->
-        <section class="py-24 bg-white">
+        <section class="relative py-24">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl font-bold text-neutral-900 mb-4">Meet Our Team</h2>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    
-    <!-- Team Section -->
-    <section class="relative py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black text-white mb-6">
-                    Meet Our <span class="text-gradient-primary">Team</span>
-                </h2>
+                    <h2 class="text-4xl md:text-5xl font-black text-white mb-6">
+                        Meet Our <span class="text-gradient-primary">Team</span>
+                    </h2>
                 <p class="text-xl text-white/80">Visionaries, innovators, and automation experts</p>
             </div>
             

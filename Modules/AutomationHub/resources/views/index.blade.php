@@ -320,99 +320,99 @@ function automationHub() {
         templates: [
             {
                 id: 1,
-                title: 'نظام إعداد العملاء الجدد',
-                description: 'أتمت عملية إعداد العملاء الجدد بالكامل مع التحقق من الهوية والترحيب الشخصي',
-                category: 'إدارة العملاء',
+                title: 'Customer Onboarding System',
+                description: 'Automate the entire new customer onboarding process with identity verification and personalized welcome',
+                category: 'Customer Management',
                 rating: 4.9,
                 downloads: '12K+',
                 gradient: 'from-blue-500 to-purple-600',
                 icon: '👥',
                 favorite: false,
-                features: ['التحقق الآلي', 'رسائل ترحيبية', 'تتبع التقدم', 'تقارير مفصلة']
+                features: ['Automatic Verification', 'Welcome Messages', 'Progress Tracking', 'Detailed Reports']
             },
             {
                 id: 2,
-                title: 'نظام معالجة الفواتير',
-                description: 'تبسيط إدارة الفواتير مع قراءة OCR والموافقة الآلية وتتبع المدفوعات',
-                category: 'المالية',
+                title: 'Invoice Processing System',
+                description: 'Streamline invoice management with OCR reading, automatic approval, and payment tracking',
+                category: 'Finance',
                 rating: 4.8,
                 downloads: '8.5K+',
                 gradient: 'from-green-500 to-cyan-600',
                 icon: '💰',
                 favorite: false,
-                features: ['قراءة OCR', 'موافقة آلية', 'تتبع مدفوعات', 'تقارير مالية']
+                features: ['OCR Reading', 'Auto Approval', 'Payment Tracking', 'Financial Reports']
             },
             {
                 id: 3,
-                title: 'خط إنتاج التوظيف',
-                description: 'تحسين التوظيف مع فحص المرشحين وجدولة المقابلات والفحص الخلفي',
-                category: 'الموارد البشرية',
+                title: 'Recruitment Pipeline',
+                description: 'Optimize recruitment with candidate screening, interview scheduling, and background checks',
+                category: 'Human Resources',
                 rating: 4.7,
                 downloads: '6.2K+',
                 gradient: 'from-orange-500 to-red-600',
                 icon: '🎯',
                 favorite: false,
-                features: ['فحص المرشحين', 'جدولة مقابلات', 'فحص خلفي', 'تقييم المهارات']
+                features: ['Candidate Screening', 'Interview Scheduling', 'Background Check', 'Skills Assessment']
             },
             {
                 id: 4,
-                title: 'مدير الحملات الاجتماعية',
-                description: 'إنشاء وجدولة وتحليل حملات وسائل التواصل الاجتماعي مع رؤى الذكاء الاصطناعي',
-                category: 'التسويق',
+                title: 'Social Media Campaign Manager',
+                description: 'Create, schedule, and analyze social media campaigns with AI-powered insights',
+                category: 'Marketing',
                 rating: 4.9,
                 downloads: '15K+',
                 gradient: 'from-pink-500 to-purple-600',
                 icon: '📱',
                 favorite: false,
-                features: ['جدولة المنشورات', 'تحليل البيانات', 'رؤى AI', 'تقارير الأداء']
+                features: ['Post Scheduling', 'Data Analytics', 'AI Insights', 'Performance Reports']
             },
             {
                 id: 5,
-                title: 'موجه تذاكر دعم العملاء',
-                description: 'توجيه ذكي للتذاكر وتحديد الأولويات مع تحليل المشاعر والردود الآلية',
-                category: 'الدعم الفني',
+                title: 'Customer Support Ticket Router',
+                description: 'Intelligent ticket routing and prioritization with sentiment analysis and automated responses',
+                category: 'Technical Support',
                 rating: 4.6,
                 downloads: '9.8K+',
                 gradient: 'from-cyan-500 to-blue-600',
                 icon: '🎧',
                 favorite: false,
-                features: ['توجيه ذكي', 'تحليل مشاعر', 'ردود آلية', 'تتبع حالة']
+                features: ['Smart Routing', 'Sentiment Analysis', 'Auto Responses', 'Status Tracking']
             },
             {
                 id: 6,
-                title: 'تأهيل العملاء المحتملين',
-                description: 'تسجيل وتأهيل العملاء المحتملين تلقائياً باستخدام التعلم الآلي والتحليل السلوكي',
-                category: 'إدارة العملاء',
+                title: 'Lead Qualification Engine',
+                description: 'Automatically score and qualify leads using machine learning and behavioral analysis',
+                category: 'Customer Management',
                 rating: 4.8,
                 downloads: '11K+',
                 gradient: 'from-purple-500 to-pink-600',
                 icon: '🚀',
                 favorite: false,
-                features: ['تسجيل نقاط', 'تحليل سلوكي', 'تعلم آلي', 'تقارير مفصلة']
+                features: ['Lead Scoring', 'Behavioral Analysis', 'Machine Learning', 'Detailed Reports']
             },
             {
                 id: 7,
-                title: 'نظام إدارة المخزون الذكي',
-                description: 'إدارة المخزون بذكاء مع تتبع المستويات والتنبؤ بالطلب وإعادة الطلب التلقائي',
-                category: 'المالية',
+                title: 'Smart Inventory Management',
+                description: 'Intelligent inventory management with level tracking, demand forecasting, and auto-reordering',
+                category: 'Finance',
                 rating: 4.7,
                 downloads: '7.3K+',
                 gradient: 'from-emerald-500 to-teal-600',
                 icon: '📦',
                 favorite: false,
-                features: ['تتبع المستويات', 'التنبؤ بالطلب', 'إعادة طلب آلي', 'تقارير المخزون']
+                features: ['Level Tracking', 'Demand Forecasting', 'Auto Reordering', 'Inventory Reports']
             },
             {
                 id: 8,
-                title: 'مساعد التوظيف الذكي',
-                description: 'مساعد ذكي للتوظيف يقوم بفحص السير الذاتية وجدولة المقابلات وتقييم المرشحين',
-                category: 'الموارد البشرية',
+                title: 'Smart Recruitment Assistant',
+                description: 'Intelligent recruitment assistant that screens resumes, schedules interviews, and evaluates candidates',
+                category: 'Human Resources',
                 rating: 4.8,
                 downloads: '9.1K+',
                 gradient: 'from-violet-500 to-purple-600',
                 icon: '🤖',
                 favorite: false,
-                features: ['فحص السير الذاتية', 'جدولة ذكية', 'تقييم المهارات', 'تقارير التوظيف']
+                features: ['Resume Screening', 'Smart Scheduling', 'Skills Assessment', 'Recruitment Reports']
             }
         ],
         
@@ -457,7 +457,7 @@ function automationHub() {
                 const activeCategory = this.categories.find(cat => cat.active);
                 const params = new URLSearchParams();
                 
-                if (activeCategory.name !== 'الكل') {
+                if (activeCategory.name !== 'All') {
                     params.append('category', activeCategory.name);
                 }
                 
@@ -484,7 +484,7 @@ function automationHub() {
             const activeCategory = this.categories.find(cat => cat.active);
             let filtered = this.templates;
             
-            if (activeCategory.name !== 'الكل') {
+            if (activeCategory.name !== 'All') {
                 filtered = filtered.filter(template => 
                     template.category === activeCategory.name
                 );
@@ -632,13 +632,13 @@ function automationHub() {
                         this.showMessage = false;
                     }, 2000);
                 } else {
-                    throw new Error(result.error || 'فشل في تحديث المفضلة');
+                    throw new Error(result.error || 'Failed to update favorites');
                 }
             } catch (error) {
                 console.error('Error toggling favorite:', error);
                 this.showMessage = true;
                 this.messageType = 'error';
-                this.message = 'حدث خطأ أثناء تحديث المفضلة';
+                this.message = 'An error occurred while updating favorites';
                 setTimeout(() => this.showMessage = false, 2000);
             }
         },
@@ -651,15 +651,15 @@ function automationHub() {
                 const newTemplates = [
                     {
                         id: Date.now(),
-                        title: 'نظام جديد للأتمتة',
-                        description: 'قالب جديد لأتمتة العمليات المتقدمة',
-                        category: 'التسويق',
+                        title: 'New Automation System',
+                        description: 'New template for advanced process automation',
+                        category: 'Marketing',
                         rating: 4.5,
                         downloads: '1.2K+',
                         gradient: 'from-indigo-500 to-blue-600',
                         icon: '⚡',
                         favorite: false,
-                        features: ['ميزة 1', 'ميزة 2', 'ميزة 3', 'ميزة 4']
+                        features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4']
                     }
                 ];
                 
@@ -668,7 +668,7 @@ function automationHub() {
                 
                 this.showMessage = true;
                 this.messageType = 'success';
-                this.message = 'تم تحميل قوالب إضافية!';
+                this.message = 'Additional templates loaded!';
                 this.loading = false;
                 
                 setTimeout(() => {
@@ -834,123 +834,123 @@ function automationHub() {
 function automationHub() {
     return {
         searchQuery: '',
-        selectedCategory: 'الكل',
+        selectedCategory: 'All',
         loading: false,
         showPreview: false,
         selectedTemplate: null,
         templates: [
             {
                 id: 1,
-                title: 'تدفق إعداد العملاء',
+                title: 'Customer Onboarding Flow',
                 titleEn: 'Customer Onboarding Flow',
-                description: 'أتمتة عملية إعداد العملاء الجديدة بالكامل مع التحقق من الوثائق المدعوم بالذكاء الاصطناعي وتسلسل الترحيب الشخصي.',
+                description: 'Automate complete new customer onboarding process with AI-powered document verification and personalized welcome sequences.',
                 category: 'CRM',
                 rating: 4.9,
                 downloads: '12K+',
                 gradient: 'from-blue-500 to-purple-600',
                 icon: '👥',
-                features: ['تصميم سير العمل', 'جدولة المهام', 'مراقبة فورية', 'مشغلات ذكية'],
-                complexity: 'متوسط',
-                estimatedTime: '2-3 ساعات',
+                features: ['Workflow Design', 'Task Scheduling', 'Real-time Monitoring', 'Smart Triggers'],
+                complexity: 'Medium',
+                estimatedTime: '2-3 hours',
                 isPopular: true,
                 isFavorite: false
             },
             {
                 id: 2,
-                title: 'نظام معالجة الفواتير',
+                title: 'Invoice Processing System',
                 titleEn: 'Invoice Processing System',
-                description: 'تبسيط إدارة الفواتير مع التعرف على النصوص، سير العمل للموافقة التلقائية، وتتبع الدفعات.',
-                category: 'المالية',
+                description: 'Streamline invoice management with OCR recognition, automated approval workflows, and payment tracking.',
+                category: 'Finance',
                 rating: 4.8,
                 downloads: '8.5K+',
                 gradient: 'from-green-500 to-cyan-600',
                 icon: '💰',
-                features: ['OCR للفواتير', 'موافقة تلقائية', 'تتبع الدفعات', 'تقارير مالية'],
-                complexity: 'متقدم',
-                estimatedTime: '4-5 ساعات',
+                features: ['Invoice OCR', 'Auto Approval', 'Payment Tracking', 'Financial Reports'],
+                complexity: 'Advanced',
+                estimatedTime: '4-5 hours',
                 isPopular: true,
                 isFavorite: false
             },
             {
                 id: 3,
-                title: 'خط أنابيب التوظيف',
+                title: 'Employee Recruitment Pipeline',
                 titleEn: 'Employee Recruitment Pipeline',
-                description: 'تحسين عملية التوظيف مع فحص المرشحين التلقائي، جدولة المقابلات، والتحقق من الخلفية.',
-                category: 'الموارد البشرية',
+                description: 'Optimize recruitment process with automated candidate screening, interview scheduling, and background verification.',
+                category: 'Human Resources',
                 rating: 4.7,
                 downloads: '6.2K+',
                 gradient: 'from-orange-500 to-red-600',
                 icon: '🎯',
-                features: ['فحص السير الذاتية', 'جدولة المقابلات', 'تقييم المرشحين', 'إدارة العروض'],
-                complexity: 'متوسط',
-                estimatedTime: '3-4 ساعات',
+                features: ['Resume Screening', 'Interview Scheduling', 'Candidate Assessment', 'Offer Management'],
+                complexity: 'Medium',
+                estimatedTime: '3-4 hours',
                 isPopular: false,
                 isFavorite: false
             },
             {
                 id: 4,
-                title: 'مدير الحملات التسويقية',
+                title: 'Social Media Campaign Manager',
                 titleEn: 'Social Media Campaign Manager',
-                description: 'إنشاء وجدولة وتحليل حملات وسائل التواصل الاجتماعي عبر منصات متعددة مع رؤى الذكاء الاصطناعي.',
-                category: 'التسويق',
+                description: 'Create, schedule, and analyze social media campaigns across multiple platforms with AI-powered insights.',
+                category: 'Marketing',
                 rating: 4.9,
                 downloads: '15K+',
                 gradient: 'from-pink-500 to-purple-600',
                 icon: '📱',
-                features: ['نشر متعدد المنصات', 'جدولة ذكية', 'تحليلات متقدمة', 'إدارة المحتوى'],
-                complexity: 'سهل',
-                estimatedTime: '1-2 ساعة',
+                features: ['Multi-platform Posting', 'Smart Scheduling', 'Advanced Analytics', 'Content Management'],
+                complexity: 'Easy',
+                estimatedTime: '1-2 hours',
                 isPopular: true,
                 isFavorite: false
             },
             {
                 id: 5,
-                title: 'موجه تذاكر الدعم',
+                title: 'Customer Support Ticket Router',
                 titleEn: 'Customer Support Ticket Router',
-                description: 'توجيه ذكي للتذاكر والأولوية مع تحليل المشاعر والردود التلقائية.',
-                category: 'الدعم',
+                description: 'Intelligent ticket routing and prioritization with sentiment analysis and automated responses.',
+                category: 'Support',
                 rating: 4.6,
                 downloads: '9.8K+',
                 gradient: 'from-cyan-500 to-blue-600',
                 icon: '🎧',
-                features: ['توجيه ذكي', 'تحليل المشاعر', 'ردود تلقائية', 'تتبع SLA'],
-                complexity: 'متقدم',
-                estimatedTime: '4-6 ساعات',
+                features: ['Smart Routing', 'Sentiment Analysis', 'Auto Responses', 'SLA Tracking'],
+                complexity: 'Advanced',
+                estimatedTime: '4-6 hours',
                 isPopular: false,
                 isFavorite: false
             },
             {
                 id: 6,
-                title: 'تأهيل العملاء المحتملين',
+                title: 'Sales Lead Qualification',
                 titleEn: 'Sales Lead Qualification',
-                description: 'تسجيل وتأهيل العملاء المحتملين تلقائياً باستخدام التعلم الآلي وتحليل السلوك.',
-                category: 'المبيعات',
+                description: 'Automatically score and qualify leads using machine learning and behavioral analysis.',
+                category: 'Sales',
                 rating: 4.8,
                 downloads: '11K+',
                 gradient: 'from-purple-500 to-pink-600',
                 icon: '🚀',
-                features: ['تسجيل تلقائي', 'تحليل سلوكي', 'تأهيل ذكي', 'تتبع التحويل'],
-                complexity: 'متوسط',
-                estimatedTime: '2-3 ساعات',
+                features: ['Auto Scoring', 'Behavioral Analysis', 'Smart Qualification', 'Conversion Tracking'],
+                complexity: 'Medium',
+                estimatedTime: '2-3 hours',
                 isPopular: true,
                 isFavorite: false
             }
         ],
         categories: [
-            { name: 'الكل', active: true, gradient: 'from-blue-500 to-purple-600' },
+            { name: 'All', active: true, gradient: 'from-blue-500 to-purple-600' },
             { name: 'CRM', active: false, gradient: 'from-purple-500 to-pink-600' },
-            { name: 'المالية', active: false, gradient: 'from-green-500 to-cyan-600' },
-            { name: 'الموارد البشرية', active: false, gradient: 'from-orange-500 to-red-600' },
-            { name: 'التسويق', active: false, gradient: 'from-pink-500 to-purple-600' },
-            { name: 'الدعم', active: false, gradient: 'from-cyan-500 to-blue-600' },
-            { name: 'المبيعات', active: false, gradient: 'from-purple-500 to-pink-600' }
+            { name: 'Finance', active: false, gradient: 'from-green-500 to-cyan-600' },
+            { name: 'Human Resources', active: false, gradient: 'from-orange-500 to-red-600' },
+            { name: 'Marketing', active: false, gradient: 'from-pink-500 to-purple-600' },
+            { name: 'Support', active: false, gradient: 'from-cyan-500 to-blue-600' },
+            { name: 'Sales', active: false, gradient: 'from-purple-500 to-pink-600' }
         ],
         
         get filteredTemplates() {
             let filtered = this.templates;
             
             // Filter by category
-            if (this.selectedCategory !== 'الكل') {
+            if (this.selectedCategory !== 'All') {
                 filtered = filtered.filter(template => template.category === this.selectedCategory);
             }
             
@@ -1004,11 +1004,11 @@ function automationHub() {
             const template = this.templates.find(t => t.id === templateId);
             if (template) {
                 // Simulate template usage
-                this.showNotification(`جاري تحميل قالب: ${template.title}`);
+                this.showNotification(`Loading template: ${template.title}`);
                 
                 // In a real app, this would redirect to template editor
                 setTimeout(() => {
-                    this.showNotification(`تم تحميل قالب ${template.title} بنجاح!`);
+                    this.showNotification(`Template ${template.title} loaded successfully!`);
                 }, 2000);
             }
         },
@@ -1035,18 +1035,18 @@ function automationHub() {
         
         loadMoreTemplates() {
             this.loading = true;
-            this.showNotification('جاري تحميل المزيد من القوالب...');
+            this.showNotification('Loading more templates...');
             
             // Simulate API call
             setTimeout(() => {
                 this.loading = false;
-                this.showNotification('تم تحميل قوالب جديدة بنجاح!');
+                this.showNotification('New templates loaded successfully!');
             }, 2000);
         },
         
         init() {
             // Initialize the component
-            this.showNotification('مرحباً بك في مركز الأتمتة! 🚀');
+            this.showNotification('Welcome to the Automation Hub! 🚀');
         }
     }
 }

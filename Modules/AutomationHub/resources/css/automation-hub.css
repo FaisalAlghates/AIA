@@ -88,7 +88,7 @@
     border-radius: 1px;
 }
 
-/* تأثيرات الإشعارات */
+/* Notification Effects */
 .notification-enter {
     animation: slideInRight 0.3s ease-out;
 }
@@ -119,7 +119,7 @@
     }
 }
 
-/* تحسينات نافذة المعاينة */
+/* Preview Modal Enhancements */
 .preview-modal {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -150,7 +150,7 @@
     background: rgba(139, 69, 255, 0.7);
 }
 
-/* تحسينات شريط البحث */
+/* Search Bar Enhancements */
 .search-input {
     position: relative;
 }
@@ -164,7 +164,7 @@
     border-color: rgb(59, 130, 246);
 }
 
-/* تأثيرات التصنيفات */
+/* Category Effects */
 .category-tag {
     position: relative;
     transition: all 0.3s ease;
@@ -174,7 +174,7 @@
     transform: translateY(-2px);
 }
 
-/* تحسينات الإحصائيات */
+/* Statistics Enhancements */
 .stat-counter {
     font-variant-numeric: tabular-nums;
     transition: all 0.3s ease;
@@ -184,7 +184,7 @@
     transform: scale(1.1);
 }
 
-/* تأثيرات التحميل */
+/* Loading Effects */
 .loading-overlay {
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(10px);
@@ -199,7 +199,7 @@
     50% { opacity: 1; }
 }
 
-/* تحسينات responsive */
+/* Responsive Enhancements */
 @media (max-width: 768px) {
     .template-grid {
         grid-template-columns: 1fr;
@@ -217,7 +217,7 @@
     }
 }
 
-/* تحسينات الوضع المظلم */
+/* Dark Mode Enhancements */
 @media (prefers-color-scheme: dark) {
     .glass-card {
         background: rgba(255, 255, 255, 0.05);

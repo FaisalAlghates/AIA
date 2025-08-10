@@ -6,5 +6,16 @@
     "About": true,
     "Contact": true,
     "Auth": true,
-    "Dashboard": true
+    "Dashboard": true,
+    "Services": true,
+    "Blog": true,
+    "Documentation": true,
+    "Support": true,
+    "Legal": true,
+    "Pricing": true,
+    "FAQ": true,
+    "Resources": true,
+    "Team": true,
+    "Portfolio": true,
+    "Analytics": true
 }

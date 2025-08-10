@@ -49,27 +49,81 @@
                 </div>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-2">
+                <div class="hidden lg:flex items-center space-x-1">
                     <a href="{{ route('home.index') }}" 
-                       class="px-6 py-3 rounded-xl text-white/80 hover:text-white transition-all duration-300 hover-float @if(request()->route()->getName() === 'home.index') bg-white/10 text-white font-semibold @endif">
+                       class="px-4 py-2 rounded-xl text-white/80 hover:text-white transition-all duration-300 hover-float @if(request()->route()->getName() === 'home.index') bg-white/10 text-white font-semibold @endif">
                         Home
                     </a>
-                    <a href="{{ route('solutions.index') }}" 
-                       class="px-6 py-3 rounded-xl text-white/80 hover:text-white transition-all duration-300 hover-float @if(str_contains(request()->route()->getName(), 'solutions')) bg-white/10 text-white font-semibold @endif">
-                        Solutions
+                    
+                    <!-- Services Dropdown -->
+                    <div class="relative group" x-data="{ open: false }">
+                        <button @click="open = !open" @click.away="open = false"
+                                class="px-4 py-2 rounded-xl text-white/80 hover:text-white transition-all duration-300 hover-float flex items-center space-x-1">
+                            <span>Services</span>
+                            <svg class="w-4 h-4 transition-transform duration-200" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute top-full left-0 mt-2 w-48 glass rounded-xl border border-white/10 py-2 z-50">
+                            <a href="{{ route('services.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">Services</a>
+                            <a href="{{ route('automationhub.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">Automation Hub</a>
+                            <a href="{{ route('analytics.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">Analytics</a>
+                        </div>
+                    </div>
+
+                    <!-- Company Dropdown -->
+                    <div class="relative group" x-data="{ open: false }">
+                        <button @click="open = !open" @click.away="open = false"
+                                class="px-4 py-2 rounded-xl text-white/80 hover:text-white transition-all duration-300 hover-float flex items-center space-x-1">
+                            <span>Company</span>
+                            <svg class="w-4 h-4 transition-transform duration-200" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute top-full left-0 mt-2 w-48 glass rounded-xl border border-white/10 py-2 z-50">
+                            <a href="{{ route('about.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">About Us</a>
+                            <a href="{{ route('team.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">Our Team</a>
+                            <a href="{{ route('portfolio.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">Portfolio</a>
+                        </div>
+                    </div>
+
+                    <!-- Resources Dropdown -->
+                    <div class="relative group" x-data="{ open: false }">
+                        <button @click="open = !open" @click.away="open = false"
+                                class="px-4 py-2 rounded-xl text-white/80 hover:text-white transition-all duration-300 hover-float flex items-center space-x-1">
+                            <span>Resources</span>
+                            <svg class="w-4 h-4 transition-transform duration-200" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute top-full left-0 mt-2 w-48 glass rounded-xl border border-white/10 py-2 z-50">
+                            <a href="{{ route('blog.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">Blog</a>
+                            <a href="{{ route('documentation.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">Documentation</a>
+                            <a href="{{ route('resources.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">Resources</a>
+                            <a href="{{ route('faq.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">FAQ</a>
+                        </div>
+                    </div>
+
+                    <a href="{{ route('pricing.index') }}" 
+                       class="px-4 py-2 rounded-xl text-white/80 hover:text-white transition-all duration-300 hover-float @if(str_contains(request()->route()->getName(), 'pricing')) bg-white/10 text-white font-semibold @endif">
+                        Pricing
                     </a>
-                    <a href="{{ route('automationhub.index') }}" 
-                       class="px-6 py-3 rounded-xl text-white/80 hover:text-white transition-all duration-300 hover-float @if(str_contains(request()->route()->getName(), 'automationhub')) bg-white/10 text-white font-semibold @endif">
-                        Automation Hub
-                    </a>
-                    <a href="{{ route('about.index') }}" 
-                       class="px-6 py-3 rounded-xl text-white/80 hover:text-white transition-all duration-300 hover-float @if(str_contains(request()->route()->getName(), 'about')) bg-white/10 text-white font-semibold @endif">
-                        About
-                    </a>
-                    <a href="{{ route('contact.index') }}" 
-                       class="px-6 py-3 rounded-xl text-white/80 hover:text-white transition-all duration-300 hover-float @if(str_contains(request()->route()->getName(), 'contact')) bg-white/10 text-white font-semibold @endif">
-                        Contact
-                    </a>
+                    
+                    <!-- Support Dropdown -->
+                    <div class="relative group" x-data="{ open: false }">
+                        <button @click="open = !open" @click.away="open = false"
+                                class="px-4 py-2 rounded-xl text-white/80 hover:text-white transition-all duration-300 hover-float flex items-center space-x-1">
+                            <span>Support</span>
+                            <svg class="w-4 h-4 transition-transform duration-200" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div x-show="open" x-transition class="absolute top-full left-0 mt-2 w-48 glass rounded-xl border border-white/10 py-2 z-50">
+                            <a href="{{ route('support.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">Help Center</a>
+                            <a href="{{ route('contact.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">Contact Us</a>
+                            <a href="{{ route('legal.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">Legal</a>
+                        </div>
+                    </div>
                     
                     <!-- Auth Links -->
                     @auth
@@ -96,7 +150,7 @@
                 </div>
 
                 <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
+                <div class="lg:hidden flex items-center">
                     <button type="button" class="text-white/80 hover:text-white focus:outline-none p-2 rounded-lg hover-glow" 
                             x-data x-on:click="$dispatch('toggle-mobile-menu')">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -108,16 +162,48 @@
         </div>
 
         <!-- Mobile menu -->
-        <div class="md:hidden" x-data="{ open: false }" x-on:toggle-mobile-menu.window="open = !open" x-show="open" 
+        <div class="lg:hidden" x-data="{ open: false }" x-on:toggle-mobile-menu.window="open = !open" x-show="open" 
              x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-y-4" 
              x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-200" 
              x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-4">
             <div class="px-4 pt-4 pb-6 space-y-2 glass border-t border-white/10">
                 <a href="{{ route('home.index') }}" class="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">Home</a>
-                <a href="{{ route('solutions.index') }}" class="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">Solutions</a>
-                <a href="{{ route('automationhub.index') }}" class="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">Automation Hub</a>
-                <a href="{{ route('about.index') }}" class="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">About</a>
-                <a href="{{ route('contact.index') }}" class="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">Contact</a>
+                
+                <!-- Services Section -->
+                <div class="border-t border-white/10 pt-2 mt-2">
+                    <p class="px-4 py-2 text-xs font-semibold text-white/60 uppercase tracking-wider">Services</p>
+                    <a href="{{ route('services.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">Services</a>
+                    <a href="{{ route('automationhub.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">Automation Hub</a>
+                    <a href="{{ route('analytics.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">Analytics</a>
+                </div>
+                
+                <!-- Company Section -->
+                <div class="border-t border-white/10 pt-2 mt-2">
+                    <p class="px-4 py-2 text-xs font-semibold text-white/60 uppercase tracking-wider">Company</p>
+                    <a href="{{ route('about.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">About Us</a>
+                    <a href="{{ route('team.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">Our Team</a>
+                    <a href="{{ route('portfolio.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">Portfolio</a>
+                </div>
+                
+                <!-- Resources Section -->
+                <div class="border-t border-white/10 pt-2 mt-2">
+                    <p class="px-4 py-2 text-xs font-semibold text-white/60 uppercase tracking-wider">Resources</p>
+                    <a href="{{ route('blog.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">Blog</a>
+                    <a href="{{ route('documentation.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">Documentation</a>
+                    <a href="{{ route('resources.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">Resources</a>
+                    <a href="{{ route('faq.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">FAQ</a>
+                </div>
+                
+                <!-- Main Links -->
+                <div class="border-t border-white/10 pt-2 mt-2">
+                    <a href="{{ route('pricing.index') }}" class="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">Pricing</a>
+                    
+                    <!-- Support Section -->
+                    <p class="px-4 py-2 text-xs font-semibold text-white/60 uppercase tracking-wider mt-2">Support</p>
+                    <a href="{{ route('support.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">Help Center</a>
+                    <a href="{{ route('contact.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">Contact Us</a>
+                    <a href="{{ route('legal.index') }}" class="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">Legal</a>
+                </div>
                 
                 @auth
                     <a href="{{ route('dashboard') }}" class="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300">Dashboard</a>

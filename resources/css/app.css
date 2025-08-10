@@ -325,6 +325,10 @@ select:focus[data-flux-control] {
     animation: floating-particles 10s ease-in-out infinite;
 }
 
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
 .animate-gradient-shift {
     background-size: 400% 400%;
     animation: gradient-shift 8s ease infinite;
@@ -583,6 +587,13 @@ select:focus[data-flux-control] {
 .delay-1500 { animation-delay: 1.5s; }
 .delay-2000 { animation-delay: 2s; }
 .delay-3000 { animation-delay: 3s; }
+.delay-4000 { animation-delay: 4s; }
+
+/* Animation Delay Classes for CSS Custom Properties */
+.animation-delay-1000ms { animation-delay: 1000ms; }
+.animation-delay-2000ms { animation-delay: 2000ms; }
+.animation-delay-3000ms { animation-delay: 3000ms; }
+.animation-delay-4000ms { animation-delay: 4000ms; }
 
 /* Ultra Modern Scrollbar */
 ::-webkit-scrollbar {

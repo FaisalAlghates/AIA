@@ -56,7 +56,7 @@ jobs:
             http://127.0.0.1:8000/support http://127.0.0.1:8000/legal || true
           test -f site/index.html || { echo "no home page was captured"; tail -50 serve.log; exit 1; }
           # a note at the top of every page, and no leftover absolute links to the local server
-          find site -name '*.html' -print0 | xargs -0 sed -i 's#<body\([^>]*\)>#<body\1><div style="position:fixed;bottom:12px;left:50%;transform:translateX(-50%);z-index:99999;background:#2a2208;color:#f3d98b;padding:8px 16px;border-radius:8px;font:13px/1.4 system-ui,sans-serif;box-shadow:0 2px 12px rgba(0,0,0,.4)">Static demo snapshot: forms and live components are switched off.</div>#; s#http://127.0.0.1:8000/#./#g'
+          find site -name '*.html' -print0 | xargs -0 sed -i 's|<body\([^>]*\)>|<body\1><div style="position:fixed;bottom:12px;left:50%;transform:translateX(-50%);z-index:99999;background:#2a2208;color:#f3d98b;padding:8px 16px;border-radius:8px;font:13px/1.4 system-ui,sans-serif;box-shadow:0 2px 12px rgba(0,0,0,.4)">Static demo snapshot: forms and live components are switched off.</div>|; s|http://127.0.0.1:8000/|./|g'
           touch site/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:

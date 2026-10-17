@@ -11,6 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // an identical migration (2025_08_10_074700) already creates this table on a fresh install
+        if (Schema::hasTable('blog_posts')) {
+            return;
+        }
+
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');

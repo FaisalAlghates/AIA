@@ -24,7 +24,7 @@ use App\Http\Controllers\Admin\TeamMembersController;
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 // Admin Routes
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('services', AdminServicesController::class);
     Route::resource('team-members', TeamMembersController::class);

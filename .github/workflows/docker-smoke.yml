@@ -18,10 +18,12 @@ jobs:
           docker run -d --name app -p 8080:10000 -e APP_DEBUG=true aia-demo
           for i in $(seq 1 60); do curl -fs http://127.0.0.1:8080/ >/dev/null && break; sleep 2; done
           fail=0
-          for p in / /solutions /services /team /portfolio /blog /documentation /resources /faq /pricing /analytics /support /legal /admin /admin/services /admin/team-members /login /register; do
+          for p in / /solutions /services /team /portfolio /blog /documentation /resources /faq /pricing /analytics /support /legal /login /register; do
             code=$(curl -s -o body.txt -w '%{http_code}' -H 'Accept: application/json' "http://127.0.0.1:8080$p")
             echo "$code $p"
             if [ "$code" != "200" ] && [ "$code" != "302" ]; then fail=1; head -c 400 body.txt | tr '\n' ' '; echo; fi
           done
+          # the admin area needs a signed-in user: it must send guests to the login page
+          code=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8080/admin); echo "$code /admin (guest, expect 302)"; [ "$code" = "302" ] || fail=1
           docker logs app 2>&1 | tail -n 20
           exit $fail

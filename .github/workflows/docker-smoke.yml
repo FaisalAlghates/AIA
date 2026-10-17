@@ -17,6 +17,7 @@ jobs:
         run: |
           docker run -d --name app -p 8080:10000 -e APP_DEBUG=true aia-demo
           for i in $(seq 1 60); do curl -fs http://127.0.0.1:8080/ >/dev/null && break; sleep 2; done
+          curl -fs http://127.0.0.1:8080/ >/dev/null || { echo "the app did not start:"; docker logs app 2>&1 | tail -n 60; exit 1; }
           fail=0
           for p in / /solutions /services /team /portfolio /blog /documentation /resources /faq /pricing /analytics /support /legal /login /register; do
             code=$(curl -s -o body.txt -w '%{http_code}' -H 'Accept: application/json' "http://127.0.0.1:8080$p")

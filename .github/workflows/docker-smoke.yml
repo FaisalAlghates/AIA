@@ -1,0 +1,27 @@
+name: Container smoke test
+
+# Builds the demo image, starts it and requests every public page and the admin pages.
+on:
+  push:
+    branches: [main]
+    paths: ['Dockerfile', 'docker/**', 'app/**', 'routes/**', 'resources/**', 'database/**', 'Modules/**', 'composer.json', '.github/workflows/docker-smoke.yml']
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t aia-demo .
+      - name: Run and request the pages
+        run: |
+          docker run -d --name app -p 8080:10000 -e APP_DEBUG=true aia-demo
+          for i in $(seq 1 60); do curl -fs http://127.0.0.1:8080/ >/dev/null && break; sleep 2; done
+          fail=0
+          for p in / /solutions /services /team /portfolio /blog /documentation /resources /faq /pricing /analytics /support /legal /admin /admin/services /admin/team-members /login /register; do
+            code=$(curl -s -o body.txt -w '%{http_code}' -H 'Accept: application/json' "http://127.0.0.1:8080$p")
+            echo "$code $p"
+            if [ "$code" != "200" ] && [ "$code" != "302" ]; then fail=1; head -c 400 body.txt | tr '\n' ' '; echo; fi
+          done
+          docker logs app 2>&1 | tail -n 20
+          exit $fail

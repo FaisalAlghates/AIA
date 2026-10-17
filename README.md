@@ -46,6 +46,21 @@ AIA is the web presence of an AI and automation agency: a public site that expla
 - **Data:** SQLite by default, any Laravel-supported database works
 - **Quality:** Pest, Laravel Pint
 
+## Run the whole app (Docker)
+
+The static demo above is a snapshot. The real app, with working forms, uploads and sign-in, runs from the included `Dockerfile`: PHP, the built front end and a SQLite database seeded on start.
+
+```bash
+docker build -t aia-demo .
+docker run --rm -p 8080:10000 aia-demo
+```
+
+Open <http://localhost:8080>. Sign in at `/login` with `admin@aia.com` / `password` (created by the seeder) to open `/admin`. A GitHub Action builds this image on every push and requests every public page, sign-in and registration, and the admin area (checked by the feature tests in `tests/Feature/AdminTest.php`).
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/FaisalAlghates/AIA)
+
+> The Render button deploys the same image on Render's free plan: the first request after a pause is slow, and the data is reset each time the instance restarts. Use it for demos only, never with real data.
+
 ## Run it
 
 You need PHP 8.2+, Composer and Node.js.
